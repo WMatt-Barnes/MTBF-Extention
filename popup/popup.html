@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTBF Work Order Analyzer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>MTBF Work Order Analyzer</h1>
+    <p>Analyze CMMS work order tables for MTBF, costs, and Pareto analysis</p>
+  </header>
+
+  <main>
+    <!-- Scan Section -->
+    <section id="scan-section">
+      <h2>Data Analysis</h2>
+      <div class="action-buttons">
+        <button id="scan-btn" class="primary-btn">Scan Page for Work Orders</button>
+      </div>
+      <div id="scan-status"></div>
+    </section>
+
+    <!-- Column Mapping Section (initially hidden) -->
+    <section id="column-mapping-section" style="display:none;">
+      <h2>Column Mapping</h2>
+      <div id="column-mapping-form">
+        <p>Automatic column mapping failed. Please map columns manually:</p>
+        <div>
+          <label>Equipment Column:</label>
+          <select id="equipment-select"></select>
+        </div>
+        <div>
+          <label>Date Column:</label>
+          <select id="date-select"></select>
+        </div>
+        <div>
+          <label>Cost Column:</label>
+          <select id="cost-select">
+            <option value="">None</option>
+          </select>
+        </div>
+        <div>
+          <label>Work Type Column:</label>
+          <select id="worktype-select">
+            <option value="">None</option>
+          </select>
+        </div>
+        <button id="apply-mapping-btn">Apply Mapping</button>
+      </div>
+    </section>
+
+    <!-- Summary Section (initially hidden) -->
+    <section id="summary-section" style="display:none;">
+      <h2>Analysis Summary</h2>
+      <div class="metric-grid">
+        <div class="metric-item">
+          <div class="metric-label">MTBF</div>
+          <div class="metric-value" id="mtbf-value">-</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">Failure Rate (per year)</div>
+          <div class="metric-value" id="failure-rate-value">-</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">Average Cost</div>
+          <div class="metric-value" id="avg-cost-value">-</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">Total Work Orders</div>
+          <div class="metric-value" id="total-wo-value">-</div>
+        </div>
+      </div>
+
+      <div class="breakdown">
+        <h3>Work Order Breakdown</h3>
+        <div class="metric-grid">
+          <div class="metric-item">
+            <div class="metric-label">Corrective (CM)</div>
+            <div class="metric-value" id="cm-count">-</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">Preventative (PM)</div>
+            <div class="metric-value" id="pm-count">-</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Equipment Filter</h3>
+      <div class="filter-section">
+        <select id="equipment-filter">
+          <option value="">All Equipment</option>
+        </select>
+        <button id="apply-filter-btn">Apply Filter</button>
+        <button id="clear-filter-btn">Clear Filter</button>
+      </div>
+      <!-- Filtered Results Section -->
+      <section id="filtered-results" style="display:none;">
+        <h2>Filtered Results</h2>
+        <div class="metrics-grid">
+          <div class="metric">
+            <label>Filtered MTBF:</label>
+            <span id="filtered-mtbf-value">-</span>
+          </div>
+          <div class="metric">
+            <label>Filtered Failure Rate:</label>
+            <span id="filtered-failure-rate-value">-</span>
+          </div>
+          <div class="metric">
+            <label>Filtered Work Orders:</label>
+            <span id="filtered-total-wo">-</span>
+          </div>
+        </div>
+        
+        <!-- Filtered CM/PM Breakdown -->
+        <div class="breakdown-section">
+          <h3>Work Type Breakdown</h3>
+          <div class="breakdown-grid">
+            <div class="breakdown-item">
+              <span class="label">CM:</span>
+              <span id="filtered-cm-count">0</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="label">PM:</span>
+              <span id="filtered-pm-count">0</span>
+            </div>
+          </div>
+          <div id="filtered-warning" style="display:none; color: orange; font-weight: bold; margin-top: 8px;">
+            ⚠️ Only preventative work orders found. MTBF calculation may not be accurate.
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Pareto Chart Section (initially hidden) -->
+    <section id="pareto-section" style="display:none;">
+      <h2>Pareto Analysis</h2>
+      <div class="chart-container">
+        <h3>Top Equipment by Work Order Count</h3>
+        <canvas id="pareto-canvas" width="650" height="300"></canvas>
+      </div>
+      
+      <div class="top-equipment">
+        <div class="equipment-list">
+          <h3>Top Equipment by Work Order Count</h3>
+          <ul id="top-equipment-list"></ul>
+        </div>
+        <div class="equipment-list">
+          <h3>Top Equipment by Total Cost</h3>
+          <ul id="top-cost-equipment-list"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>v1.0.0 &copy; 2024 - Local Analysis Only</small>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html> 

@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "MTBF Work Order Analyzer",
+  "version": "1.0.0",
+  "description": "Analyze CMMS work order tables in-browser: MTBF, failure rate, cost, CM/PM, Pareto charts.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "MTBF Analyzer"
+  },
+
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "icons": {
+    "16": "assets/icons/app_icon_16x16.png",
+    "32": "assets/icons/app_icon_32x32.png",
+    "48": "assets/icons/app_icon_48x48.png",
+    "128": "assets/icons/app_icon_128x128.png"
+  }
+} 

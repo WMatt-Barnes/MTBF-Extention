@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive CMMS Test Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; margin: 20px 0; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .test-section { margin: 30px 0; padding: 20px; border: 2px solid #ccc; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Comprehensive CMMS Test Data</h1>
+    <p>This page contains various test scenarios to validate the MTBF Work Order Analyzer extension.</p>
+
+    <!-- Test 1: Standard Format -->
+    <div class="test-section">
+        <h2>Test 1: Standard Format (Should Work Perfectly)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Reported Date</th>
+                    <th>Cost</th>
+                    <th>Work Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pump-001</td>
+                    <td>01/15/2024</td>
+                    <td>$1,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Pump-001</td>
+                    <td>02/20/2024</td>
+                    <td>$800</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Pump-001</td>
+                    <td>04/10/2024</td>
+                    <td>$1,500</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Motor-002</td>
+                    <td>01/10/2024</td>
+                    <td>$2,100</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Motor-002</td>
+                    <td>03/15/2024</td>
+                    <td>$1,800</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 2: Missing Data -->
+    <div class="test-section">
+        <h2>Test 2: Missing Data (Should Handle Gracefully)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Reported Date</th>
+                    <th>Cost</th>
+                    <th>Work Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Compressor-003</td>
+                    <td>01/05/2024</td>
+                    <td>$3,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Compressor-003</td>
+                    <td></td>
+                    <td>$1,500</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Compressor-003</td>
+                    <td>03/20/2024</td>
+                    <td></td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>02/15/2024</td>
+                    <td>$2,800</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Valve-004</td>
+                    <td>04/01/2024</td>
+                    <td>$900</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 3: Alternate Date Formats -->
+    <div class="test-section">
+        <h2>Test 3: Alternate Date Formats</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Asset ID</th>
+                    <th>Date</th>
+                    <th>Total Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fan-005</td>
+                    <td>2024-01-15</td>
+                    <td>$1,100</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Fan-005</td>
+                    <td>15-02-2024</td>
+                    <td>$950</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Fan-005</td>
+                    <td>03/25/2024</td>
+                    <td>$1,300</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Fan-005</td>
+                    <td>2024-04-10</td>
+                    <td>$1,050</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 4: Weird Headers -->
+    <div class="test-section">
+        <h2>Test 4: Weird Headers (Should Auto-Map)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Machine Name</th>
+                    <th>WO Date</th>
+                    <th>Labor Cost</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Boiler-006</td>
+                    <td>01/20/2024</td>
+                    <td>$2,500</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Boiler-006</td>
+                    <td>03/05/2024</td>
+                    <td>$1,800</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Boiler-006</td>
+                    <td>05/12/2024</td>
+                    <td>$2,200</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 5: PM Only Data -->
+    <div class="test-section">
+        <h2>Test 5: PM Only Data (Should Show Warning)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment Number</th>
+                    <th>Created Date</th>
+                    <th>Material Cost</th>
+                    <th>Maintenance Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Filter-007</td>
+                    <td>01/01/2024</td>
+                    <td>$200</td>
+                    <td>PM</td>
+                </tr>
+                <tr>
+                    <td>Filter-007</td>
+                    <td>02/01/2024</td>
+                    <td>$200</td>
+                    <td>PM</td>
+                </tr>
+                <tr>
+                    <td>Filter-007</td>
+                    <td>03/01/2024</td>
+                    <td>$200</td>
+                    <td>PM</td>
+                </tr>
+                <tr>
+                    <td>Filter-007</td>
+                    <td>04/01/2024</td>
+                    <td>$200</td>
+                    <td>PM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 6: Mixed Data Types -->
+    <div class="test-section">
+        <h2>Test 6: Mixed Data Types</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Asset</th>
+                    <th>Work Order Date</th>
+                    <th>Actual Cost</th>
+                    <th>WO Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Generator-008</td>
+                    <td>01/10/2024</td>
+                    <td>$5,000</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Generator-008</td>
+                    <td>02/15/2024</td>
+                    <td>$3,500</td>
+                    <td>PM</td>
+                </tr>
+                <tr>
+                    <td>Generator-008</td>
+                    <td>04/20/2024</td>
+                    <td>$4,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Generator-008</td>
+                    <td>06/01/2024</td>
+                    <td>$1,800</td>
+                    <td>PM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 7: Invalid Date Formats -->
+    <div class="test-section">
+        <h2>Test 7: Invalid Date Formats (Should Skip)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sensor-009</td>
+                    <td>2024/13/45</td>
+                    <td>$500</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Sensor-009</td>
+                    <td>Invalid Date</td>
+                    <td>$600</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Sensor-009</td>
+                    <td>25/13/2024</td>
+                    <td>$450</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Sensor-009</td>
+                    <td>01/15/2024</td>
+                    <td>$550</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 8: Single Work Order -->
+    <div class="test-section">
+        <h2>Test 8: Single Work Order (Should Show Insufficient Data)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lone-010</td>
+                    <td>01/15/2024</td>
+                    <td>$1,000</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 9: Same Date Work Orders -->
+    <div class="test-section">
+        <h2>Test 9: Same Date Work Orders (Should Handle)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Multi-011</td>
+                    <td>01/15/2024</td>
+                    <td>$1,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Multi-011</td>
+                    <td>01/15/2024</td>
+                    <td>$800</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Multi-011</td>
+                    <td>02/20/2024</td>
+                    <td>$1,500</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 10: Large Numbers -->
+    <div class="test-section">
+        <h2>Test 10: Large Numbers (Should Format Correctly)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Expensive-012</td>
+                    <td>01/01/2024</td>
+                    <td>$125,000</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Expensive-012</td>
+                    <td>03/15/2024</td>
+                    <td>$98,750</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Expensive-012</td>
+                    <td>06/30/2024</td>
+                    <td>$156,300</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 11: Non-Numeric Costs -->
+    <div class="test-section">
+        <h2>Test 11: Non-Numeric Costs (Should Handle)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Weird-013</td>
+                    <td>01/15/2024</td>
+                    <td>N/A</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Weird-013</td>
+                    <td>02/20/2024</td>
+                    <td>Pending</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Weird-013</td>
+                    <td>03/10/2024</td>
+                    <td>$1,200</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 12: Empty Table -->
+    <div class="test-section">
+        <h2>Test 12: Empty Table (Should Handle Gracefully)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Empty table body -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 13: Table with No Headers -->
+    <div class="test-section">
+        <h2>Test 13: Table with No Headers (Should Skip)</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td>NoHeader-014</td>
+                    <td>01/15/2024</td>
+                    <td>$1,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>NoHeader-014</td>
+                    <td>02/20/2024</td>
+                    <td>$800</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 14: Very Long Equipment Names -->
+    <div class="test-section">
+        <h2>Test 14: Very Long Equipment Names (Should Truncate in Charts)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Very-Long-Equipment-Name-That-Exceeds-Normal-Length-015</td>
+                    <td>01/15/2024</td>
+                    <td>$1,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Another-Very-Long-Equipment-Name-With-Special-Characters-@#$%^&*()-016</td>
+                    <td>02/20/2024</td>
+                    <td>$800</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Super-Long-Equipment-Name-That-Should-Be-Truncated-In-Pareto-Charts-017</td>
+                    <td>03/10/2024</td>
+                    <td>$1,500</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Test 15: Future Dates -->
+    <div class="test-section">
+        <h2>Test 15: Future Dates (Should Handle)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Future-018</td>
+                    <td>12/31/2025</td>
+                    <td>$1,200</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Future-018</td>
+                    <td>01/15/2026</td>
+                    <td>$800</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>Future-018</td>
+                    <td>06/30/2026</td>
+                    <td>$1,500</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Instructions</h2>
+        <p>Test the extension with each table above to verify:</p>
+        <ul>
+            <li><strong>Test 1:</strong> Should work perfectly with standard format</li>
+            <li><strong>Test 2:</strong> Should skip rows with missing data</li>
+            <li><strong>Test 3:</strong> Should handle different date formats</li>
+            <li><strong>Test 4:</strong> Should auto-map weird headers</li>
+            <li><strong>Test 5:</strong> Should show PM-only warning</li>
+            <li><strong>Test 6:</strong> Should handle mixed CM/PM data</li>
+            <li><strong>Test 7:</strong> Should skip invalid dates</li>
+            <li><strong>Test 8:</strong> Should show "insufficient data" for single work order</li>
+            <li><strong>Test 9:</strong> Should handle same-date work orders</li>
+            <li><strong>Test 10:</strong> Should format large numbers with commas</li>
+            <li><strong>Test 11:</strong> Should handle non-numeric costs</li>
+            <li><strong>Test 12:</strong> Should handle empty tables gracefully</li>
+            <li><strong>Test 13:</strong> Should skip tables without headers</li>
+            <li><strong>Test 14:</strong> Should truncate long names in charts</li>
+            <li><strong>Test 15:</strong> Should handle future dates</li>
+        </ul>
+    </div>
+
+</body>
+</html> 
